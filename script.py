@@ -18,11 +18,11 @@ def load_word():
 
 
 def get_guess():
-    guess = input("Guess a letter!")
+    guess = input("Guess a letter! --> ")
     return guess
 
-def game_state(bad_guess):
-    if bad_guess > 7:
+def game_state(guess_remaining):
+    if guess_remaining < 1:
         game_lose = True
 
 def check_game_state(game_win, score, secret_word_length):
@@ -35,8 +35,14 @@ def check_game_state(game_win, score, secret_word_length):
         pass
 
 
-def check_guess(guess):
-    if guess in already_guessed:
+def check_guess(guess, guess_remaining):
+
+    #first check to see if the guess is valid
+    if guess.isalpha() == False: 
+        print("Invalid input. Enter a letter and guess again!")
+
+    
+    elif guess in already_guessed:
         print("You already guesssed that letter. Guess again!")
     elif guess in secret_word:
         already_guessed.append(guess)
@@ -45,13 +51,12 @@ def check_guess(guess):
             if guess == secret_word[i]:
                 print("You got it!")
                 blank_spaces[i] = guess
-        pass #replace corresponding underscore with guess
+            i += 1
     else:
         already_guessed.append(guess)
-        bad_guess += 1
-        print("Nope, not that one. Guess again.")
+        guess_remaining -= 1
+        print(f"Nope, not that one. You have {guess_remaining} guesses remaining. Guess again.")
     display_word()
-    get_guess()
 
 
 def display_spaces(secret_word_length):
@@ -71,7 +76,12 @@ def display_word():
 def friendly_doodle(secret_word):
     
     #Welcome to the game
-    print("Welcome to friendly doodle! This is a game where you compete to guess a mystery word before the friendly doodle finishes drawing itself. Ready? Let's play!")
+    print("Welcome to friendly doodle!") 
+    print("This is a game where you compete to guess a mystery word before the friendly doodle finishes drawing itself.")
+    print("Each space represents a letter in the word.")
+    print("Ready? Let's play!")
+    print("Here's your first word:")
+    display_spaces(secret_word_length)
 
     while (game_win == False or game_lose == False): 
 
@@ -79,24 +89,25 @@ def friendly_doodle(secret_word):
         guess = get_guess()
 
         #Check to see if the input is in the word, is valid, etc.
-        check_guess(guess)
+        check_guess(guess, guess_remaining)
 
         #Show the guessed word
-        display_word()
+        #display_word()
 
         #Check the game status
-        check_game_state()
+        #check_game_state(game_win, score, secret_word_length)
 
 
 #initialize variables to start the game
 score = 0
-bad_guess = 0
+guess_remaining = 7
 already_guessed = []
 game_win = False
 game_lose = False
 secret_word = load_word()
 secret_word_length = len(secret_word)
 blank_spaces = []
+#comment display spaces out later on 
 display_spaces(secret_word_length)
 friendly_doodle(secret_word)
 

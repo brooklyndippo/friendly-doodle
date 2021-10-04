@@ -58,10 +58,10 @@ Day 07: Fix any remaining bugs, make sure your code has helpful comments, and su
 Requirements
 Your project must meet the below requirements in order to be considered passing:
 
-User must be able to enter letters to guess
+✓ User must be able to enter letters to guess 
 The user must get accurate feedback on if they guessed a correct letter or an incorrect letter
-The user is always prompted to guess a letter until they win or lose
-The game must use the provided list of words as its source.
+The user is always prompted to guess a letter until they win or lose 
+✓ The game must use the provided list of words as its source. 
 User is allowed seven (7) incorrect guesses, and they should be told how many guesses they have left after each incorrect guess
 After guessing a letter, the user must be told the following:
 Correct guess: the placeholder text with the correct letter filled in.
