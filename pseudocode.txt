@@ -2,7 +2,7 @@ Steps to complete:
 
 1. Initialie project in Github repository ✓
 2. Import starter code and word bank ✓
-3. Create a scoring system
+3. Create a scoring system ✓
 
 SET score = 0
 SET game_win = false
@@ -11,7 +11,7 @@ IF game_win is true:
     RESET game_win to false
     RESET bad_guess to 0
 
-4. Create an input for guessing
+4. Create an input for guessing ✓
 
 GET guess
 (Should be single letter, not repeated.)

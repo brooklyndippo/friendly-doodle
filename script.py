@@ -16,6 +16,90 @@ def load_word():
     print (secret_word)
     return secret_word
 
+
+def get_guess():
+    input = "Guess a letter!"
+
+def check_game_win(game_win, score, secret_word_length):
+    if game_win == True:
+        score += (secret_word_length * 100)
+        print (f"Your score is {score}")
+        game_win = False
+        return score
+    else:
+        pass
+
+
+#initialize variables to start the game
+score = 0
+game_win = False
+secret_word = load_word()
+secret_word_length = len(secret_word)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def spaceman(secret_word):
+    '''
+    A function that controls the game of spaceman. Will start spaceman in the command line.
+    Args:
+      secret_word (string): the secret word to guess.
+    '''
+
+
+    #TODO: show the player information about the game according to the project spec
+    print("Welcome to Friendly Doodle, a game in which you try to guess a mystery word BEFORE the doodle is complete!")
+
+    #TODO: Ask the player to guess one letter per round and check that it is only one letter
+
+    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+
+    #TODO: show the guessed word so far
+
+    #TODO: check if the game has been won or lost
+
+
+#initialize variables to start the game
+score = 0
+game_win = False
+secret_word = load_word()
+secret_word_length = len(secret_word)
+
+
+'''
+    A function to reset variabls if the game has been won
+'''
+def check_game_win(game_win, score, secret_word_length):
+    if game_win == True:
+        score += (secret_word_length * 100)
+        print (f"Your score is {score}")
+        game_win = False
+        return score
+    else:
+        pass
+
+
+
+
+
 def is_word_guessed(secret_word, letters_guessed):
     '''
     A function that checks if all the letters of the secret word have been guessed.
@@ -26,7 +110,9 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+    for letter in letters_guessed:
+        if letter not in secret_word:
+            pass
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
