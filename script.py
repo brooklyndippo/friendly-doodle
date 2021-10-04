@@ -19,8 +19,10 @@ def load_word():
 
 def get_guess():
     input = "Guess a letter!"
+    return input
 
-def check_game_win(game_win, score, secret_word_length):
+
+def check_game_state(game_win, score, secret_word_length):
     if game_win == True:
         score += (secret_word_length * 100)
         print (f"Your score is {score}")
@@ -29,13 +31,41 @@ def check_game_win(game_win, score, secret_word_length):
     else:
         pass
 
+def friendly_doodle(secret_word):
+    pass
+
+def check_guess(guess):
+    if guess in already_guessed:
+        print("You already guesssed that letter. Guess again!")
+    elif guess in secret_word:
+        already_guessed.append(guess)
+        pass #replace corresponding underscore with guess
+    else:
+        already_guessed.append(guess)
+        bad_guess += 1
+        print("Nope, not that one. Guess again.")
+    get_guess()
+
+
+def display_spaces(secret_word_length):
+    i = 0
+    while i < secret_word_length:
+        blank_spaces.append("_ ")
+        i += 1
+    display = ''.join(blank_spaces)
+    print (display)
 
 #initialize variables to start the game
 score = 0
+bad_guess = 0
+already_guessed = []
 game_win = False
 secret_word = load_word()
 secret_word_length = len(secret_word)
-
+blank_spaces = []
+display_spaces(secret_word_length)
+guess = get_guess()
+friendly_doodle(secret_word)
 
 
 
@@ -75,27 +105,6 @@ def spaceman(secret_word):
     #TODO: show the guessed word so far
 
     #TODO: check if the game has been won or lost
-
-
-#initialize variables to start the game
-score = 0
-game_win = False
-secret_word = load_word()
-secret_word_length = len(secret_word)
-
-
-'''
-    A function to reset variabls if the game has been won
-'''
-def check_game_win(game_win, score, secret_word_length):
-    if game_win == True:
-        score += (secret_word_length * 100)
-        print (f"Your score is {score}")
-        game_win = False
-        return score
-    else:
-        pass
-
 
 
 
@@ -169,5 +178,5 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-secret_word = load_word()
+#secret_word = load_word()
 spaceman(secret_word)
