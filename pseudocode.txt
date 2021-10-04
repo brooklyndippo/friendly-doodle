@@ -3,12 +3,51 @@ Steps to complete:
 1. Initialie project in Github repository ✓
 2. Import starter code and word bank ✓
 3. Create a scoring system
+
+SET score = 0
+SET game_win = false
+IF game_win is true:
+    THEN ADD word_lenght x 100 to the score
+    RESET game_win to false
+    RESET bad_guess to 0
+
 4. Create an input for guessing
+
+GET guess
+(Should be single letter, not repeated.)
+
 5. Create a check to see if the guess letter is in the word
+
+
+FUNCTION check_guess:
+    STORE the guess in list already_guessed
+    IF the guess IS IN the secret_word:
+        THEN replace corresponding underscore with guess
+    ELSE:
+        bad_guess += 1
+
 6. Create a check to see if the letter was guessed already
+
+IF guess IS IN already_guessed list:
+    DISPLAY "You already guesssed that letter. Guess again!"
+
 7. Limit number of incorrect guesses
+
+SET bad_guess = 0
+ADD 1 when guess IS NOT IN secret_word (see step #5)
+
 8. Display blank spaces according to word length
+
+SET num_blank_spaces = LENGTH of secret_word
+INITIALIZE blank_spaces list = "_" * num_blank_spaces
+
 9. Replace the spaces with letters on correct guesses
+
+IF the guess IS IN the secret_word:
+DOWHILE loop through each letter of the secret_word:
+    IF the guess == letter:
+        THEN REPLACE blank_spaces[letter] with guess 
+
 10. Test & reiterate!
 
 ---
