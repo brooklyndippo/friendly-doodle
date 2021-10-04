@@ -16,7 +16,7 @@ IF game_win is true:
 GET guess
 (Should be single letter, not repeated.)
 
-5. Create a check to see if the guess letter is in the word
+5. Create a check to see if the guess letter is in the word ✓
 
 
 FUNCTION check_guess:
@@ -26,17 +26,17 @@ FUNCTION check_guess:
     ELSE:
         bad_guess += 1
 
-6. Create a check to see if the letter was guessed already
+6. Create a check to see if the letter was guessed already ✓
 
 IF guess IS IN already_guessed list:
     DISPLAY "You already guesssed that letter. Guess again!"
 
-7. Limit number of incorrect guesses
+7. Limit number of incorrect guesses ✓
 
 SET bad_guess = 0
 ADD 1 when guess IS NOT IN secret_word (see step #5)
 
-8. Display blank spaces according to word length
+8. Display blank spaces according to word length ✓
 
 SET num_blank_spaces = LENGTH of secret_word
 INITIALIZE blank_spaces list = "_" * num_blank_spaces

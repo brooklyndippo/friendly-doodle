@@ -18,9 +18,12 @@ def load_word():
 
 
 def get_guess():
-    input = "Guess a letter!"
-    return input
+    guess = input("Guess a letter!")
+    return guess
 
+def game_state(bad_guess):
+    if bad_guess > 7:
+        game_lose = True
 
 def check_game_state(game_win, score, secret_word_length):
     if game_win == True:
@@ -31,19 +34,23 @@ def check_game_state(game_win, score, secret_word_length):
     else:
         pass
 
-def friendly_doodle(secret_word):
-    pass
 
 def check_guess(guess):
     if guess in already_guessed:
         print("You already guesssed that letter. Guess again!")
     elif guess in secret_word:
         already_guessed.append(guess)
+        i=0
+        while i < secret_word_length:
+            if guess == secret_word[i]:
+                print("You got it!")
+                blank_spaces[i] = guess
         pass #replace corresponding underscore with guess
     else:
         already_guessed.append(guess)
         bad_guess += 1
         print("Nope, not that one. Guess again.")
+    display_word()
     get_guess()
 
 
@@ -54,17 +61,43 @@ def display_spaces(secret_word_length):
         i += 1
     display = ''.join(blank_spaces)
     print (display)
+    return(blank_spaces)
+
+def display_word():
+    display = ''.join(blank_spaces)
+    print (display)
+
+
+def friendly_doodle(secret_word):
+    
+    #Welcome to the game
+    print("Welcome to friendly doodle! This is a game where you compete to guess a mystery word before the friendly doodle finishes drawing itself. Ready? Let's play!")
+
+    while (game_win == False or game_lose == False): 
+
+        #Ask the player to guess a letter
+        guess = get_guess()
+
+        #Check to see if the input is in the word, is valid, etc.
+        check_guess(guess)
+
+        #Show the guessed word
+        display_word()
+
+        #Check the game status
+        check_game_state()
+
 
 #initialize variables to start the game
 score = 0
 bad_guess = 0
 already_guessed = []
 game_win = False
+game_lose = False
 secret_word = load_word()
 secret_word_length = len(secret_word)
 blank_spaces = []
 display_spaces(secret_word_length)
-guess = get_guess()
 friendly_doodle(secret_word)
 
 
