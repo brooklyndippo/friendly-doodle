@@ -34,14 +34,23 @@ def check_game_state(game_active):
         print("Would you like to play again?")
         play_again = input("yes/no --> ")
         if (play_again == "yes"):
+            restart_game()
+            
+            '''
+            global already_guessed
             already_guessed = []
+            global game_win
             game_win = False
+            global game_lose
             game_lose = False
+            global secret_word
             secret_word = load_word()
+            global secret_word_length
             secret_word_length = len(secret_word)
+            global blank_spaces
             blank_spaces = []
             friendly_doodle(secret_word)
-        
+        '''
         #complete the function
 
 
@@ -62,7 +71,7 @@ def check_win():
 
 
 '''
-function CHECK LOSE
+function CHECK LOSE 
 '''
 
 def check_lose():
@@ -76,23 +85,6 @@ def check_lose():
     
     return game_active
 
-
-
-
-'''
-def game_state(num_guesses):
-    if num_guesses < 1:
-        game_lose = True
-
-def check_game_state(game_win, score, secret_word_length):
-    if game_win == True:
-        score += (secret_word_length * 100)
-        print (f"Your score is {score}")
-        game_win = False
-        return score
-    else:
-        pass
-'''
 
 
 
@@ -181,14 +173,34 @@ def friendly_doodle(secret_word):
         game_active = check_win()
         check_game_state(game_active)
         game_active = check_lose()
-        check_game_state()
-
-        #check_game_state(game_win, score, secret_word_length)
-
-    
+        check_game_state(game_active)
 
 
 
+
+def restart_game():
+
+    #declare global variables
+    global already_guessed
+    global game_win
+    global game_lose
+    global secret_word
+    global secret_word_length
+    global blank_spaces
+
+    #reinitialize the variables
+    already_guessed = []
+    game_win = False
+    game_lose = False
+    secret_word = load_word()
+    secret_word_length = len(secret_word)
+    blank_spaces = []
+
+    #begin the game
+    print("")
+    print("Here's your word:")
+    display_spaces()
+    friendly_doodle(secret_word)
 
 '''
 ------------------------------------------------------------------------------------------------
