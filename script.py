@@ -12,7 +12,7 @@ def load_word():
     
     words_list = words_list[0].split(' ') 
     secret_word = random.choice(words_list)
-    #print (secret_word)
+    print (secret_word)
     return secret_word
 
 
@@ -35,24 +35,6 @@ def check_game_state(game_active):
         play_again = input("yes/no --> ")
         if (play_again == "yes"):
             restart_game()
-            
-            '''
-            global already_guessed
-            already_guessed = []
-            global game_win
-            game_win = False
-            global game_lose
-            game_lose = False
-            global secret_word
-            secret_word = load_word()
-            global secret_word_length
-            secret_word_length = len(secret_word)
-            global blank_spaces
-            blank_spaces = []
-            friendly_doodle(secret_word)
-        '''
-        #complete the function
-
 
 
 '''
@@ -61,8 +43,11 @@ function CHECK WIN
 def check_win():
     if "_ " not in blank_spaces:
         print("You win!")
-        game_active = False
-
+        add_score = (100 * secret_word_length)
+        game_stats[1] += add_score
+        print(f"Your score is {game_stats[1]}")
+        game_active = False    
+    
     else:
         game_active = True
     
@@ -73,8 +58,7 @@ def check_win():
 function CHECK LOSE 
 '''
 def check_lose():
-    num_guesses = 10
-    if num_guesses < 0:
+    if game_stats[0] < 0:
         print("You lose.")
         game_active = False
     
@@ -82,8 +66,6 @@ def check_lose():
         game_active = True
     
     return game_active
-
-
 
 
 '''
@@ -121,8 +103,10 @@ def check_guess(guess):
     #print that it is not in the word & number of guesses remaining
     else:
         already_guessed.append(guess)
+        game_stats[0] -= 1
+        print (game_stats[0])
         print("Nope, not that one.")
-        print(f"You have {num_guesses} guesses remaining. Guess again.")
+        print(f"You have {game_stats[0]} guesses remaining. Guess again.")
     
     
 
@@ -183,6 +167,7 @@ def restart_game():
     global secret_word
     global secret_word_length
     global blank_spaces
+    global game_stats
 
     #reinitialize the variables
     already_guessed = []
@@ -191,6 +176,7 @@ def restart_game():
     secret_word = load_word()
     secret_word_length = len(secret_word)
     blank_spaces = []
+    game_stats = [7,0]
 
     #begin the game
     print("")
@@ -215,7 +201,8 @@ game_lose = False
 secret_word = load_word()
 secret_word_length = len(secret_word)
 blank_spaces = []
-
+game_stats = [7,0]
+#game stats = guesses, score
 
 #Welcome to the game
 print ("")
