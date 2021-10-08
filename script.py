@@ -12,7 +12,7 @@ def load_word():
     
     words_list = words_list[0].split(' ') 
     secret_word = random.choice(words_list)
-    print (secret_word)
+    #print (secret_word)
     return secret_word
 
 
