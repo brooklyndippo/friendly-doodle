@@ -58,7 +58,6 @@ def check_game_state(game_active):
 '''
 function CHECK WIN
 '''
-
 def check_win():
     if "_ " not in blank_spaces:
         print("You win!")
@@ -73,7 +72,6 @@ def check_win():
 '''
 function CHECK LOSE 
 '''
-
 def check_lose():
     num_guesses = 10
     if num_guesses < 0:
@@ -124,12 +122,9 @@ def check_guess(guess):
     else:
         already_guessed.append(guess)
         print("Nope, not that one.")
-        print(f"You have __ guesses remaining. Guess again.")
+        print(f"You have {num_guesses} guesses remaining. Guess again.")
     
     
-
-
-
 
 '''
 function DISPLAY SPACES shows a space for each letter of the secret word
@@ -156,6 +151,7 @@ def display_word():
 function FRIENDLY DOODLE runs the game
 '''
 def friendly_doodle(secret_word):
+    
 
     while (game_win == False or game_lose == False): 
 
@@ -212,6 +208,7 @@ def restart_game():
 
 #initialize variables to start the game
 score = 0
+num_guesses = 7
 already_guessed = []
 game_win = False
 game_lose = False
@@ -223,7 +220,7 @@ blank_spaces = []
 #Welcome to the game
 print ("")
 print("Welcome to friendly doodle!") 
-print("This is a game where you compete to guess a mystery word before the friendly doodle finishes drawing itself.")
+print("This is a game where you compete to guess a mystery word.")
 print("Each space represents a letter in the word.")
 print("Ready? Let's play!")
 print("")

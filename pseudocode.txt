@@ -21,10 +21,17 @@ GET guess
 
 FUNCTION check_guess:
     STORE the guess in list already_guessed
-    IF the guess IS IN the secret_word:
+    IF the guess IS NOT a letter:
+        DISPLAY error message
+        PROMPT to guess again
+    ELIF the guess IS IN already_guessed:
+        DISPLAY error message
+        PROMPT to guess again
+    ELIF the guess IS IN the secret_word:
         THEN replace corresponding underscore with guess
     ELSE:
         bad_guess += 1
+        DISPLAY You have # guesses left.
 
 6. Create a check to see if the letter was guessed already ✓
 
@@ -41,14 +48,14 @@ ADD 1 when guess IS NOT IN secret_word (see step #5)
 SET num_blank_spaces = LENGTH of secret_word
 INITIALIZE blank_spaces list = "_" * num_blank_spaces
 
-9. Replace the spaces with letters on correct guesses
+9. Replace the spaces with letters on correct guesses ✓
 
 IF the guess IS IN the secret_word:
 DOWHILE loop through each letter of the secret_word:
     IF the guess == letter:
         THEN REPLACE blank_spaces[letter] with guess 
 
-10. Test & reiterate!
+10. Test & reiterate! ✓
 
 ---
 Day 03: Build out guessing functionality, scoring system
